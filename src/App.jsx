@@ -24,8 +24,6 @@ const App = () => {
       center: [-9, 39],
       zoom: 6
     })
-
-    map.
   }, [])
 
   const handleInputChange = e => setAngle(e.target.value)
