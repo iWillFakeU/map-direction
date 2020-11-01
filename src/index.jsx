@@ -8,11 +8,30 @@ export const render = () => {
 
   console.log(process.env.NODE_ENV)
 
-  if (process.env.NODE_ENV !== 'development') {
-    const forecastPageContent = document.getElementById('forecasts-page-content')
+  console.log('window location', window.location)
 
-    console.log('Removing advertisement div...')
-    forecastPageContent.removeChild(forecastPageContent.childNodes[1])
+  if (process.env.NODE_ENV !== 'development') {
+    const isNewWindguru = !window.location.hostname.includes('old')
+
+    if (isNewWindguru) {
+      const forecastPageContent = document.getElementById('forecasts-page-content')
+
+      console.log('Removing advertisement div...')
+      forecastPageContent.removeChild(forecastPageContent.childNodes[1])
+
+      const rootDiv = document.createElement('div')
+      rootDiv.setAttribute('id', 'root')
+      forecastPageContent.insertBefore(rootDiv, forecastPageContent.children[1])
+    } else {
+      const forecastPageContent = document.getElementsByName('predpovedi')
+
+      console.log('Removing advertisement div...')
+      forecastPageContent.removeChild(forecastPageContent.childNodes[9])
+
+      const rootDiv = document.createElement('div')
+      rootDiv.setAttribute('id', 'root')
+      forecastPageContent.insertBefore(rootDiv, forecastPageContent.children[9])
+    }
 
     const scriptReact = document.createElement('script')
     scriptReact.setAttribute('src', 'https://unpkg.com/react@17/umd/react.development.js')
@@ -26,10 +45,6 @@ export const render = () => {
     scriptMap.setAttribute('href', 'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css')
     scriptMap.setAttribute('rel', 'stylesheet')
     document.head.appendChild(scriptMap)
-
-    const rootDiv = document.createElement('div')
-    rootDiv.setAttribute('id', 'root')
-    forecastPageContent.insertBefore(rootDiv, forecastPageContent.children[1])
   }
   ReactDOM.render(<App />, document.getElementById('root'))
 }

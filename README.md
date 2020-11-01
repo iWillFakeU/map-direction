@@ -1,19 +1,30 @@
-Add userscript to openuserjs
+Scripted By Jsantos
 
+```javascript
 // ==UserScript==
-// @namespace     https://openuserjs.org/users/iWillFakeU
-// @exclude       *
-
-// ==UserLibrary==
 // @name          Map Direction
-// @description   Helper for windguru
-// @copyright     2020, JSantos (https://openuserjs.org/users/iWillFakeU)
+// @description   Windguru helper
 // @license       MIT
 // @version       0.0.1
+// @include       https://www*windguru.*
+// @grant none
 // ==/UserScript==
 
-// ==/UserLibrary==
-
 // ==OpenUserJS==
-// @author iWillFakeU
+// @author JSantos
 // ==/OpenUserJS==
+
+
+(() => {
+  console.log('Starting...')
+
+  console.log('Adding listener to page...')
+
+  window.addEventListener('load', (event) => {
+    console.log('All page elements were loaded')
+
+    //script goes here
+
+    MapDirection.render()
+  })
+})()```

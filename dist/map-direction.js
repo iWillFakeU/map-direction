@@ -2151,11 +2151,32 @@ var App = () => {
 var render = () => {
   console.log('Initiating MapDirection');
   console.log("production");
+  console.log('window location', window.location);
 
   if (true) {
-    var forecastPageContent = document.getElementById('forecasts-page-content');
-    console.log('Removing advertisement div...');
-    forecastPageContent.removeChild(forecastPageContent.childNodes[1]);
+    var isNewWindguru = !window.location.hostname.includes('old');
+
+    if (isNewWindguru) {
+      var forecastPageContent = document.getElementById('forecasts-page-content');
+      console.log('Removing advertisement div...');
+      forecastPageContent.removeChild(forecastPageContent.childNodes[1]);
+      var rootDiv = document.createElement('div');
+      rootDiv.setAttribute('id', 'root');
+      forecastPageContent.insertBefore(rootDiv, forecastPageContent.children[1]);
+    } else {
+      var _forecastPageContent = document.getElementsByName('predpovedi');
+
+      console.log('Removing advertisement div...');
+
+      _forecastPageContent.removeChild(_forecastPageContent.childNodes[9]);
+
+      var _rootDiv = document.createElement('div');
+
+      _rootDiv.setAttribute('id', 'root');
+
+      _forecastPageContent.insertBefore(_rootDiv, _forecastPageContent.children[9]);
+    }
+
     var scriptReact = document.createElement('script');
     scriptReact.setAttribute('src', 'https://unpkg.com/react@17/umd/react.development.js');
     document.head.appendChild(scriptReact);
@@ -2166,9 +2187,6 @@ var render = () => {
     scriptMap.setAttribute('href', 'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css');
     scriptMap.setAttribute('rel', 'stylesheet');
     document.head.appendChild(scriptMap);
-    var rootDiv = document.createElement('div');
-    rootDiv.setAttribute('id', 'root');
-    forecastPageContent.insertBefore(rootDiv, forecastPageContent.children[1]);
   }
 
   react_dom_default.a.render( /*#__PURE__*/react_default.a.createElement(App_component, null), document.getElementById('root'));
