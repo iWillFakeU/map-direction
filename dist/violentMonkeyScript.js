@@ -2,7 +2,7 @@
 // @name          Map Direction
 // @description   Windguru helper
 // @license       MIT
-// @version       0.0.1
+// @version       0.0.2
 // @include       https://www*windguru.*
 // @grant none
 // ==/UserScript==
