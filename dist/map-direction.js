@@ -2150,11 +2150,9 @@ var App = () => {
 
 var render = () => {
   console.log('Initiating MapDirection');
-  console.log("production");
-  console.log('window location', window.location);
 
   if (true) {
-    var isNewWindguru = !window.location.hostname.includes('old');
+    var isNewWindguru = window.location.hostname.includes('www.windguru.cz');
 
     if (isNewWindguru) {
       var forecastPageContent = document.getElementById('forecasts-page-content');

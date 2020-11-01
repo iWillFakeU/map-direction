@@ -6,12 +6,8 @@ import App from './App.component'
 export const render = () => {
   console.log('Initiating MapDirection')
 
-  console.log(process.env.NODE_ENV)
-
-  console.log('window location', window.location)
-
   if (process.env.NODE_ENV !== 'development') {
-    const isNewWindguru = !window.location.hostname.includes('old')
+    const isNewWindguru = window.location.hostname.includes('www.windguru.cz')
 
     if (isNewWindguru) {
       const forecastPageContent = document.getElementById('forecasts-page-content')
