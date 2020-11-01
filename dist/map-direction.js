@@ -2164,17 +2164,11 @@ var render = () => {
       rootDiv.setAttribute('id', 'root');
       forecastPageContent.insertBefore(rootDiv, forecastPageContent.children[1]);
     } else {
-      var _forecastPageContent = document.getElementsByName('predpovedi');
+      var _forecastPageContent = document.getElementById('spot_search_res');
 
-      console.log('Removing advertisement div...');
+      _forecastPageContent.setAttribute('id', 'root');
 
-      _forecastPageContent.removeChild(_forecastPageContent.childNodes[9]);
-
-      var _rootDiv = document.createElement('div');
-
-      _rootDiv.setAttribute('id', 'root');
-
-      _forecastPageContent.insertBefore(_rootDiv, _forecastPageContent.children[9]);
+      _forecastPageContent.removeChild(_forecastPageContent.childNodes[0]);
     }
 
     var scriptReact = document.createElement('script');

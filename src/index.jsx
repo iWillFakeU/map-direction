@@ -23,14 +23,10 @@ export const render = () => {
       rootDiv.setAttribute('id', 'root')
       forecastPageContent.insertBefore(rootDiv, forecastPageContent.children[1])
     } else {
-      const forecastPageContent = document.getElementsByName('predpovedi')
+      const forecastPageContent = document.getElementById('spot_search_res')
 
-      console.log('Removing advertisement div...')
-      forecastPageContent.removeChild(forecastPageContent.childNodes[9])
-
-      const rootDiv = document.createElement('div')
-      rootDiv.setAttribute('id', 'root')
-      forecastPageContent.insertBefore(rootDiv, forecastPageContent.children[9])
+      forecastPageContent.setAttribute('id', 'root')
+      forecastPageContent.removeChild(forecastPageContent.childNodes[0])
     }
 
     const scriptReact = document.createElement('script')
@@ -46,5 +42,6 @@ export const render = () => {
     scriptMap.setAttribute('rel', 'stylesheet')
     document.head.appendChild(scriptMap)
   }
+
   ReactDOM.render(<App />, document.getElementById('root'))
 }
